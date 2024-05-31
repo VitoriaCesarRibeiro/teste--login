@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="style.css"text/css">
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="cadastroForm">
+            <i class="ri-mail-line"></i>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <i class="re-lock-line"></i>
+            <input type="password" id="senha" name="senha" placeholder="Senha"required>
+           <input type="submit" value="entrar">
+        </form>
+        <a href="#">Esqueci minha senha</a>
+        <br>
+        <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</p>
+            <div id="resultados"></div>
+    </div>
+    <script>
+        document.getElementById("cadastroForm").addEventListener("submit", function(event){
+            event.preventDefault();
+
+            var email = document.getElementById("email").value;
+            var senha = document.getElementById("senha").value;
+           
+            var usuario = JSON.parse(localStorage.getItem("usuario"));
+
+            if(usuario && email === usuario.email && senha === usuario.senha){
+                document.getElementById("resultados").textContent = "Login bem sucedido";
+            } else {
+                document.getElementById("resultados").textcontent = "Email ou senha incorretos. Verifique suas credenciais."
+            }
+        });
+    </script>
+            
+        
+    </div>
+</body>
+</html>
